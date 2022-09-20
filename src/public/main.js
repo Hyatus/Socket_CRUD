@@ -12,6 +12,7 @@ const socket = io(); // Si lo dejamos vació se va a conectar al mismo host desd
 const noteForm = document.querySelector('#noteForm');
 const title = document.querySelector('#title')
 const description = document.querySelector('#description')
+const notes = document.querySelector('#notes')
 
 noteForm.addEventListener('submit', e =>{
     e.preventDefault() //  Así no se recarga la página al presionar el botón 
@@ -23,6 +24,9 @@ noteForm.addEventListener('submit', e =>{
         description: description.value
     })
     
+    socket.on('server:newnote',data => {
+       notes.innerHTML += ' new note '
+    })
 }) // Evento submit es cuandoe enviamos el formulario
 
 

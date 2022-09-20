@@ -14,7 +14,7 @@ const notes = [];
 
 io.on('connection',(socket)=>{
     // El socket es el cliente 
-    // console.log('Nueva Conexión: ', socket.id);
+    console.log('Nueva Conexión: ', socket.id);
 
     // socket.emit('ping')// Emitir un evento
     
@@ -24,8 +24,11 @@ io.on('connection',(socket)=>{
 
     socket.on('client:newnote',newNote =>{
         const note = ({...newNote,id:uuid()})
-        console.log(note)
+        //console.log(note)
         notes.push(note)
+
+        socket.emit('server:newnote',note)
+
     });
     //socket.emit('server:rendernotes')
 
