@@ -1,4 +1,5 @@
 1. Crear el package json, crear proyecto de node: npm init --yes 
 2. instalar babel: npm install @babel/node @babel/core @babel/preset-env @babel/cli -D
 3. modulo que reinicia el código por si solo: npm i nodemon -D
-4. Instalar Express para manejar rutas HTTP: npm i express
+4. Instalar Express para manejar rutas HTTP: npm i express socket.io
+5. npm i uuid - para generar identificadores
