@@ -10,14 +10,15 @@ const io = new WebSocketServer(server) // Es la conexión desde el servidor
 
 app.use(express.static(__dirname + '/public'))
 
-const notes = [];
+let notes = [];
 
 io.on('connection',(socket)=>{
     // El socket es el cliente 
     console.log('Nueva Conexión: ', socket.id);
 
-    // socket.emit('ping')// Emitir un evento
-    
+    socket.emit('server:loadnotes',notes);
+
+    // socket.emit('ping')
     // socket.on('pong',()=>{
     //     console.log('Received')
     // })
@@ -32,7 +33,14 @@ io.on('connection',(socket)=>{
     });
     //socket.emit('server:rendernotes')
 
-})
+    socket.on('client:deletenote',(noteId) =>{
+        //console.log(id)
+        notes = notes.filter((note) => note.id !== noteId); // Devuelve un nuevo arreglo sin el elemento que se filtró 
+        //console.log(notes)
+        socket.emit('server:loadnotes',notes) // Hago la petición para que se rendericen de nuevo las notas
+    });
+
+});
 
 
 
