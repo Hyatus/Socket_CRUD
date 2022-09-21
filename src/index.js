@@ -40,6 +40,15 @@ io.on('connection',(socket)=>{
         socket.emit('server:loadnotes',notes) // Hago la petición para que se rendericen de nuevo las notas
     });
 
+    
+    socket.on('client:getnote',(noteId) =>{
+        console.log(noteId);
+        const note = notes.find(note => note.id === noteId); // Devuelve un elemento 
+        socket.emit('server:selectednote',note);
+        console.log(note);
+        
+    });
+
 });
 
 

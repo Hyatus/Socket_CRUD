@@ -12,7 +12,7 @@ const noteUI = note => {
             <h1 class="h3 card-title">${note.title}</h1>
             <div>
                 <button class="btn btn-danger delete" data-id="${note.id}">delete</button>
-                <button class="btn btn-secondary" data-id="${note.id}">update</button>
+                <button class="btn btn-secondary update" data-id="${note.id}">update</button>
             </div>
         </div>
         <p>${note.description}</p>
@@ -20,12 +20,19 @@ const noteUI = note => {
    `;
 
    const btnDelete = div.querySelector(".delete") // Analiza el que tenga la clase delete dentro del div 
+   const btnUpdate = div.querySelector(".update")
    
    btnDelete.addEventListener('click',()=>{
     //e.preventDefault() 
     deleteNote(btnDelete.dataset.id)
-   })
+   });
    
+   btnUpdate.addEventListener('click',(e)=>{
+    e.preventDefault() 
+    getNote(btnUpdate.dataset.id)
+   });
+   
+
    return div 
 }
 
