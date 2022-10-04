@@ -9,11 +9,13 @@
 // })
 
 
-const noteForm = document.querySelector('#noteForm');
-const title = document.querySelector('#title')
-const description = document.querySelector('#description')
+const noteForm = document.querySelector('#noteForm'); // Capturamos los datos del formulario por el Id
+const title = document.querySelector('#title') // Input dentro del noteForm
+const description = document.querySelector('#description') // Input dentro del Noteform
 // const notes = document.querySelector('#notes')
 
+
+// Capturamos el evento submit del formulario al dar click en enviar, evento por defecto
 noteForm.addEventListener('submit', e =>{
     e.preventDefault() //  Así no se recarga la página al presionar el botón 
 
