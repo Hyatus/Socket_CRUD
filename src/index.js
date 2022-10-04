@@ -24,6 +24,7 @@ io.on('connection',(socket)=>{
     // })
 
     socket.on('client:newnote',newNote =>{
+        // uuid nos genera un id aleatorio 
         const note = ({...newNote,id:uuid()})
         //console.log(note)
         notes.push(note)

@@ -2,6 +2,7 @@
 const socket = io();
 
 const saveNote = (title,description) => {
+    // Envía un objeto
     socket.emit('client:newnote', {
         title: title,
         description: description
