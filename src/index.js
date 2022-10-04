@@ -32,6 +32,7 @@ io.on('connection',(socket)=>{
         socket.emit('server:newnote',note)
 
     });
+    
     //socket.emit('server:rendernotes')
 
     socket.on('client:deletenote',(noteId) =>{
