@@ -29,7 +29,7 @@ io.on('connection',(socket)=>{
         //console.log(note)
         notes.push(note)
 
-        socket.emit('server:newnote',note)
+        io.emit('server:newnote',note) // Cambiamos el socket por io para que devuelva la respuesta a todos los clientes 
 
     });
     
@@ -39,7 +39,8 @@ io.on('connection',(socket)=>{
         //console.log(id)
         notes = notes.filter((note) => note.id !== noteId); // Devuelve un nuevo arreglo sin el elemento que se filtró 
         //console.log(notes)
-        socket.emit('server:loadnotes',notes) // Hago la petición para que se rendericen de nuevo las notas
+        io.emit('server:loadnotes',notes) // Hago la petición para que se rendericen de nuevo las notas
+        // El problema es que sólo lo está haciendo al cliente que hizo la petición, en lugar de SOCKET - VAMOS A USAR IO 
     });
 
     
@@ -62,8 +63,8 @@ io.on('connection',(socket)=>{
 
             return note;
         });
-        
-        socket.emit('server:loadnotes',notes);
+
+        socket.io('server:loadnotes',notes); // cambiamos socket por io 
     })
 
 });

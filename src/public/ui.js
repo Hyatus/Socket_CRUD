@@ -41,6 +41,7 @@ const noteUI = note => {
 
 
 const renderNotes = notes => {          // Las notas que ya están guardadas
+    notesList.innerHTML = "";
     notes.forEach(note => {            // Recibo una lista de notas y a cada nota la agrego a la interfaz con noteUI
         notesList.append(noteUI(note)) // Añade a la interfaz cada nota nueva que se vaya añadiendo 
     })
