@@ -1,4 +1,9 @@
 // VA A GUARDAR LA CONEXIÓN DE WEB SOCKETS SERVIDOR
+/**
+ * Save a new note
+ * @param {string} title note title
+ * @param {string} description note description
+ */
 const socket = io();
 
 const saveNote = (title,description) => {
@@ -25,7 +30,19 @@ socket.on('server:selectednote',(note) => {
     title.value += note.title;
     description.value += note.description;
 
+    savedId = note.id 
+
 });
+
+
+const updateNote = (id,title,description) =>{
+    socket.emit('client:updatenote',{
+        id,
+        title,
+        description
+    })
+}
+
 
 const deleteNote = (id) => {
     //console.log(id);

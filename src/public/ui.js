@@ -1,6 +1,7 @@
 // RENDERIZAR ELEMENTOS, AGRETAR, ETC 
 
 const notesList = document.querySelector('#notes');
+let savedId = '' // guarda la nota que se ha seleccionado en getNote para actualizar 
 
 const noteUI = note => {
     // Retorna un sólo elemento como un div con todos sus elementos etc.
@@ -18,7 +19,8 @@ const noteUI = note => {
         <p>${note.description}</p>
    </div>
    `;
-
+   
+   // No escogemos los elementos del document sino solamente del div
    const btnDelete = div.querySelector(".delete") // Analiza el que tenga la clase delete dentro del div 
    const btnUpdate = div.querySelector(".update")
    

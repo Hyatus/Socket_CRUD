@@ -20,7 +20,20 @@ noteForm.addEventListener('submit', e =>{
     e.preventDefault() //  Así no se recarga la página al presionar el botón 
 
     //console.log('Enviando',title.value,description.value)
-    saveNote(title.value,description.value)
+    
+    if (savedId){
+        // Si savedId está lleno está actualizando 
+        updateNote(savedId,title.value,description.value)
+    }else{
+        // Si no savedId está vacío está creando
+        saveNote(title.value,description.value)
+    }
+
+    title.value = "";
+    description.value = "";
+
+    title.focus(); // Pone el cursor en el campo de title
+
 
 }) // Evento submit es cuandoe enviamos el formulario
 
